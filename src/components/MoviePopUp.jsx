@@ -64,10 +64,10 @@ function MoviePopUp({ selectedMovie }) {
             <Toaster />
             {showModal && (
                 <>
-                    <div className="justify-center no-scrollbar items-center flex overflow-x-hidden overflow-y-auto fixed top-5 inset-0 z-50 outline-none focus:outline-none">
+                    <Fade direction="up" className="justify-center no-scrollbar items-center flex overflow-x-hidden overflow-y-auto fixed top-5 inset-0 z-50 outline-none focus:outline-none">
                         <div className="relative w-auto sm:my-6 rounded-lg mx-4 max-w-3xl">
                             {/*content*/}
-                            <Fade 
+                            <div 
                                 direction='up'
                                 className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-bg-custom outline-none focus:outline-none"
                             >
@@ -266,9 +266,9 @@ function MoviePopUp({ selectedMovie }) {
                                         </button>
                                     </div>
                                 </div>
-                            </Fade>
+                            </div>
                         </div>
-                    </div>
+                    </Fade>
                     <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
                 </>
             )}
