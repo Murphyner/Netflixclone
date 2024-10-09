@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { Fade } from 'react-reveal';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import StarRatings from 'react-star-ratings';
 import MoviePopUp from './MoviePopUp';
@@ -75,8 +74,8 @@ function RowTwo({data , refetch , title}) {
                                             />
                                             <div className="absolute inset-0 bg-black rounded-md bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                                            <div className='content lg:group-hover:block'>
-                                                <Fade top>
+                                            <div className='content h-full lg:group-hover:block '>
+                                                <div className="opacity-0 pt-3 hover:opacity-100 transition-all duration-1000 hover:translate-y-0 translate-y-5 ease-in-out overflow-hidden">
                                                     <div className='flex transition bg-transparent ml-3 ease-in-out delay-150'>
                                                         <div className='text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white bg-black bg-opacity-50'>
                                                             <svg
@@ -181,7 +180,7 @@ function RowTwo({data , refetch , title}) {
                                                                 </span>
                                                             ))}
                                                     </h1>
-                                                </Fade>
+                                                </div>
                                             </div>
                                         </div>
                                     </CSSTransition>

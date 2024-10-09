@@ -1,132 +1,139 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import Loading from './Loading';
 import { PopUpContext } from '../Context/PopUpContext';
-import { useGetDataQuery} from '../store/tmdbApi';
+import { useGetDataQuery } from '../store/tmdbApi';
 import MoviePopUp from './MoviePopUp';
-import { Fade } from 'react-reveal';
 import StarRatings from 'react-star-ratings';
 import { Animated, movieUpcoming } from '../store/URL';
 import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion'; // Import framer-motion
 
 function Banner() {
-    const location = useLocation()
-    const isKids = location.pathname === '/kids'
+    const location = useLocation();
+    const isKids = location.pathname === '/kids';
     const { data } = useGetDataQuery({ endpoint: isKids ? Animated : movieUpcoming });
     const [selectedMovie, setSelectedMovie] = useState(null);
-    const { showModal, setShowModal } = useContext(PopUpContext)
+    const { showModal, setShowModal } = useContext(PopUpContext);
     const imageUrl = "https://image.tmdb.org/t/p/original";
+
     useEffect(() => {
         if (data && data.results && data.results.length > 0) {
             setSelectedMovie(data.results[Math.floor(Math.random() * data.results.length)]);
         }
     }, [data]);
 
-
     if (!selectedMovie) {
         return <Loading />;
     }
-  return (
-    <div
-        style={{
-            backgroundImage: `linear-gradient(90deg, hsl(0deg 0% 7% / 91%) 0%, hsl(0deg 0% 0% / 0%) 35%, hsl(220deg 26% 44% / 0%) 100%), url(${imageUrl + selectedMovie.backdrop_path})`,
-        }}
-        className="h-[50rem] md:h-[55rem] 3xl:h-[63rem] bg-cover bg-center object-contain grid items-center"
-    >
-          <div className="ml-2  mr-2 sm:mr-0 sm:ml-[54px] mt-[75%] sm:mt-52">
-            <Fade bottom>
-                <>
-                    <h1 className="text-white text-3xl font-semibold text-center mb-5 py-2 sm:text-left sm:text-5xl sm:border-l-8 pl-4 border-red-700 md:text-6xl lg:w-2/3 xl:w-1/2 sm:font-bold drop-shadow-lg">
-                        {selectedMovie.title || selectedMovie.name}
-                    </h1>
 
-                    <div className="flex">
-                        <div className="hidden sm:flex justify-center items-center sm:justify-start ml-2">
-                            {selectedMovie.vote_average && (
-                                <h1 className="flex text-white text-xl drop-shadow-lg 2xl:text-lg">
-                                    <div className="-mt-1">
-                                        <StarRatings
-                                            rating={selectedMovie.vote_average / 2}
-                                            starRatedColor="red"
-                                            numberOfStars={5}
-                                            name="rating"
-                                            starDimension="1.1rem"
-                                            starSpacing="0.2rem"
-                                        />
-                                    </div>
-                                </h1>
-                            )}
-                        </div>
-                        <div className="ml-2 hidden sm:flex items-center  justify-center sm:justify-start">
-                            {selectedMovie.release_date || selectedMovie.first_air_date && (
-                                <h1 className="flex text-white text-base font-bold drop-shadow-lg">
-                                    {selectedMovie.release_date || selectedMovie.first_air_date}
-                                </h1>
-                            )}
-                        </div>
-                        {selectedMovie.id && (
-                            <h1 className="hidden sm:flex text-white px-2 bg-[#1e1e1e89] border-2 border-stone-600 rounded ml-2">
-                                HD
-                            </h1>
-                        )}
-                    </div>
-
-                    <div className="mt-3 mb-4">
-                        {selectedMovie.overview && (
-                            <h1 className="text-white text-xl drop-shadow-xl text-center line-clamp-2 sm:line-clamp-3 sm:text-left w-full md:w-4/5 lg:w-8/12 lg:text-xl xl:w-5/12 2xl:text-2xl">
-                                {selectedMovie.overview}
-                            </h1>
-                        )}
-                    </div>
-
-                    <div className="flex justify-center sm:justify-start">
-                        <button className="bg-red-800 hover:bg-red-900 transition duration-500 ease-in-out shadow-2xl flex items-center mb-3 mr-3 text-base sm:text-xl font-semibold text-white py-2 sm:py-2 px-10 sm:px-14 rounded-md">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 mr-2"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-                                />
-                            </svg>
-                            Play
-                        </button>
-                        <button onClick={() => setShowModal(true)} className="bg-[#33333380] flex items-center shadow-2xl mb-3 text-base sm:text-xl font-semibold text-white hover:bg-white hover:text-black transition duration-500 ease-in-out py-2 px-8 rounded-md">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 items-center mr-2"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                            </svg>
-                            More Info
-                        </button>
-                    </div>
-                </>
-            </Fade>
-        </div>
+    return (
         <div
             style={{
-                backgroundImage:
-                    "linear-gradient(hsl(0deg 0% 0% / 0%), hsl(0deg 0% 0% / 10%), hsl(0deg 0% 6.5%))",
+                backgroundImage: `linear-gradient(90deg, hsl(0deg 0% 7% / 91%) 0%, hsl(0deg 0% 0% / 0%) 35%, hsl(220deg 26% 44% / 0%) 100%), url(${imageUrl + selectedMovie.backdrop_path})`,
             }}
-            className="h-80 mt-auto"
-        ></div>
-        <MoviePopUp selectedMovie={selectedMovie} showModal={showModal} setShowModal={setShowModal} />
-    </div>
-  )
+            className="h-[50rem] md:h-[55rem] 3xl:h-[63rem] bg-cover bg-center object-contain grid items-center"
+        >
+            <div className="ml-2 mr-2 sm:mr-0 sm:ml-[54px] mt-[75%] sm:mt-52">
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }} // Smooth easing
+                >
+                    <>
+                        <h1 className="text-white text-3xl font-semibold text-center mb-5 py-2 sm:text-left sm:text-5xl sm:border-l-8 pl-4 border-red-700 md:text-6xl lg:w-2/3 xl:w-1/2 sm:font-bold drop-shadow-lg">
+                            {selectedMovie.title || selectedMovie.name}
+                        </h1>
+
+                        <div className="flex">
+                            <div className="hidden sm:flex justify-center items-center sm:justify-start ml-2">
+                                {selectedMovie.vote_average && (
+                                    <h1 className="flex text-white text-xl drop-shadow-lg 2xl:text-lg">
+                                        <div className="-mt-1">
+                                            <StarRatings
+                                                rating={selectedMovie.vote_average / 2}
+                                                starRatedColor="red"
+                                                numberOfStars={5}
+                                                name="rating"
+                                                starDimension="1.1rem"
+                                                starSpacing="0.2rem"
+                                            />
+                                        </div>
+                                    </h1>
+                                )}
+                            </div>
+                            <div className="ml-2 hidden sm:flex items-center justify-center sm:justify-start">
+                                {selectedMovie.release_date || selectedMovie.first_air_date && (
+                                    <h1 className="flex text-white text-base font-bold drop-shadow-lg">
+                                        {selectedMovie.release_date || selectedMovie.first_air_date}
+                                    </h1>
+                                )}
+                            </div>
+                            {selectedMovie.id && (
+                                <h1 className="hidden sm:flex text-white px-2 bg-[#1e1e1e89] border-2 border-stone-600 rounded ml-2">
+                                    HD
+                                </h1>
+                            )}
+                        </div>
+
+                        <div className="mt-3 mb-4">
+                            {selectedMovie.overview && (
+                                <h1 className="text-white text-xl drop-shadow-xl text-center line-clamp-2 sm:line-clamp-3 sm:text-left w-full md:w-4/5 lg:w-8/12 lg:text-xl xl:w-5/12 2xl:text-2xl">
+                                    {selectedMovie.overview}
+                                </h1>
+                            )}
+                        </div>
+
+                        <div className="flex justify-center sm:justify-start">
+                            <button className="bg-red-800 hover:bg-red-900 transition duration-500 ease-in-out shadow-2xl flex items-center mb-3 mr-3 text-base sm:text-xl font-semibold text-white py-2 sm:py-2 px-10 sm:px-14 rounded-md">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6 mr-2"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                                    />
+                                </svg>
+                                Play
+                            </button>
+                            <button
+                                onClick={() => setShowModal(true)}
+                                className="bg-[#33333380] flex items-center shadow-2xl mb-3 text-base sm:text-xl font-semibold text-white hover:bg-white hover:text-black transition duration-500 ease-in-out py-2 px-8 rounded-md"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-6 w-6 items-center mr-2"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                More Info
+                            </button>
+                        </div>
+                    </>
+                </motion.div>
+            </div>
+            <div
+                style={{
+                    backgroundImage: 'linear-gradient(hsl(0deg 0% 0% / 0%), hsl(0deg 0% 0% / 10%), hsl(0deg 0% 6.5%))',
+                }}
+                className="h-80 mt-auto"
+            ></div>
+            <MoviePopUp selectedMovie={selectedMovie} showModal={showModal} setShowModal={setShowModal} />
+        </div>
+    );
 }
 
-export default Banner
+export default Banner;

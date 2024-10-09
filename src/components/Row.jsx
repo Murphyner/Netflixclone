@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import StarRatings from "react-star-ratings";
+import { motion } from "framer-motion"; // Import framer-motion
 import { useAddWatchMutation, useGetDataQuery } from "../store/tmdbApi";
 import MoviePopUp from "./MoviePopUp";
 import { useContext, useEffect, useState } from "react";
@@ -21,10 +22,8 @@ function Row(props) {
     const { convertGenere } = useGenereConverter();
     const [addWatch] = useAddWatchMutation();
     const { data: List, refetch } = useGetDataQuery({ endpoint: myList });
-    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768)
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
     const [applyPadding, setApplyPadding] = useState(true);
-
-    
 
     const handleResize = () => {
         setIsMobileView(window.innerWidth < 768);
@@ -35,8 +34,7 @@ function Row(props) {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    console.log( 'modal' , isMobileView);
-    
+
     const addList = (item) => {
         addWatch({
             media_type: "movie",
@@ -138,7 +136,8 @@ function Row(props) {
                                     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> {/* Overlay */}
 
                                     <div className="content pt-16 opacity-0 md:opacity-100">
-                                        <MotionConfig top>
+                                        {/* Replace Fade with motion.div */}
+                                        <div className="opacity-0 pt-3 hover:opacity-100 transition-all duration-1000 hover:translate-y-0 translate-y-10 ease-in-out">
                                             <div className="flex transition ml-3 ease-in-out delay-150">
                                                 <Link to={`play/${item.id}`}
                                                     className="text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white"
@@ -264,7 +263,7 @@ function Row(props) {
                                                     }
                                                 )}
                                             </h1>
-                                        </MotionConfig>
+                                        </div>
                                     </div>
                                 </div>
                             </SwiperSlide>

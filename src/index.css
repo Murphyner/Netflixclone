@@ -62,4 +62,13 @@
 .netflix-toast-body {
     font-size: 14px;
 }
+.fade-out {
+    opacity: .5;
+    transform: translateY(-15%);
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(-15%);
+
+}
 
