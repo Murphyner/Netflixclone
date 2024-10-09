@@ -61,8 +61,8 @@ function NavRes() {
                                 <span className="font-extrabold text-lg opacity-50">User 1</span>
                             </div>
                             <ul className="text-xl flex flex-col gap-2 font-bold opacity-60">
-                                <li>
-                                    <img src="/assets/images/kids2.png" alt="" />
+                                <li className="flex items-center gap-2">
+                                    <img className="h-8 w-8"  src="/assets/images/kids2.png" alt="" />
                                     <Link to={'/kids'}>Kids</Link>
                                 </li>
                                 <li>
@@ -78,8 +78,8 @@ function NavRes() {
                                     <Link>Sign out of Netflix</Link>
                                 </li>
                             </ul>
-                            <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[180px]" />
-                            <ul className="absolute top-[200px] text-xl font-bold opacity-60 flex flex-col gap-2">
+                            <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[235px]" />
+                            <ul className="absolute top-[245px] text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
                                         <Link>{item.name}</Link>
