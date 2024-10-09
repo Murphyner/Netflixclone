@@ -62,7 +62,14 @@ function NavRes() {
                             </div>
                             <ul className="text-xl flex flex-col gap-2 font-bold opacity-60">
                                 <li>
+                                    <img src="/assets/images/kids2.png" alt="" />
+                                    <Link to={'/kids'}>Kids</Link>
+                                </li>
+                                <li>
                                     <Link>Account</Link>
+                                </li>
+                                <li>
+                                    <Link to={'/mylist'}>My List</Link>
                                 </li>
                                 <li>
                                     <Link>Help Center</Link>
