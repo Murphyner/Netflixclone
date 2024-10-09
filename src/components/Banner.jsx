@@ -6,7 +6,7 @@ import MoviePopUp from './MoviePopUp';
 import StarRatings from 'react-star-ratings';
 import { Animated, movieUpcoming } from '../store/URL';
 import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Import framer-motion
+import { Fade } from 'react-awesome-reveal';
 
 function Banner() {
     const location = useLocation();
@@ -34,12 +34,7 @@ function Banner() {
             className="h-[50rem] md:h-[55rem] 3xl:h-[63rem] bg-cover bg-center object-contain grid items-center"
         >
             <div className="ml-2 mr-2 sm:mr-0 sm:ml-[54px] mt-[75%] sm:mt-52">
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }} // Smooth easing
-                >
-                    <>
+                    <Fade direction='up'>
                         <h1 className="text-white text-3xl font-semibold text-center mb-5 py-2 sm:text-left sm:text-5xl sm:border-l-8 pl-4 border-red-700 md:text-6xl lg:w-2/3 xl:w-1/2 sm:font-bold drop-shadow-lg">
                             {selectedMovie.title || selectedMovie.name}
                         </h1>
@@ -122,8 +117,7 @@ function Banner() {
                                 More Info
                             </button>
                         </div>
-                    </>
-                </motion.div>
+                    </Fade>
             </div>
             <div
                 style={{

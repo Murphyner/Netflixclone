@@ -7,6 +7,7 @@ import { useAddWatchMutation, useGetDataQuery } from "../store/tmdbApi";
 import { myList } from "../store/URL";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 function MoviePopUp({ selectedMovie }) {
     const imageUrl = "https://image.tmdb.org/t/p/original";
@@ -66,11 +67,8 @@ function MoviePopUp({ selectedMovie }) {
                     <div className="justify-center no-scrollbar items-center flex overflow-x-hidden overflow-y-auto fixed top-5 inset-0 z-50 outline-none focus:outline-none">
                         <div className="relative w-auto sm:my-6 rounded-lg mx-4 max-w-3xl">
                             {/*content*/}
-                            <motion.div
-                                initial={{ opacity: 0, y: 50 }} // Animation start state
-                                animate={{ opacity: 1, y: 0 }} // Animation final state
-                                exit={{ opacity: 0, y: 50 }} // Animation on exit
-                                transition={{ duration: 0.5 }} // Animation duration
+                            <Fade 
+                                direction='up'
                                 className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-bg-custom outline-none focus:outline-none"
                             >
                                 <button
@@ -268,7 +266,7 @@ function MoviePopUp({ selectedMovie }) {
                                         </button>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </Fade>
                         </div>
                     </div>
                     <div className="opacity-40 fixed inset-0 z-40 bg-black"></div>
