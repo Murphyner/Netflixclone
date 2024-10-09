@@ -34,6 +34,20 @@ function MoviePopUp({ selectedMovie }) {
             })
             .then(() => setTimeout(() => window.location.reload(), 1000));
     };
+      useEffect(() => {
+        if (showModal) {
+            // Disable background scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Re-enable background scroll when modal is closed
+            document.body.style.overflow = 'auto';
+        }
+
+        // Clean up the effect when component unmounts or modal closes
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [showModal]);
 
     const removeList = (id) => {
         addWatch({
