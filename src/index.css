@@ -1,13 +1,65 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Bebas+Neue:regular&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+    .nav-link {
+        @apply md:hover:text-white md:duration-300 relative
+    }
+
+    .nav-link.active {
+        @apply text-white cursor-default
+    }
+
+    .nav-mobile {
+        @apply max-md:absolute max-md:top-0 max-md:w-[300px] max-md:h-screen duration-500;
+    }
+
+    .row-slider {
+        @apply hidden absolute top-1/2 -translate-y-1/2 md:flex bg-white/20 md:hover:bg-black/40 md:w-10 h-10 rounded-full z-10 items-center justify-center duration-300 cursor-pointer active:scale-90;
+    }
+
+    .youtube-container {
+        @apply absolute left-0 top-0 bottom-0 w-full h-full;
+    }
+
+    .form-input {
+        @apply rounded-md valid:pt-2 outline-none w-full h-full border-2 border-gray-400 bg-inherit px-3;
+    }
+
+    .form-span {
+        @apply absolute text-[#8c8c8c] text-[16px] left-3 top-1/2 -translate-y-1/2 pointer-events-none cursor-text transition-all peer-valid:top-2.5 peer-valid:text-[10px];
+    }
+
+    .form-error {
+        @apply text-[14px] pt-1.5 pb-1 text-[#E87C03];
+    }
+
+    .form-btn {
+        @apply font-medium rounded-[4px] -mt-5 leading-[50px] max-w-full text-white md:hover:brightness-[.80] duration-300
+    }
+
+    .genre-btn {
+        @apply block px-4 py-2 hover:bg-gray-600 cursor-pointer
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }
+.netflix-toast {
+    background-color: #141414 !important;
+    color: white !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.netflix-toast-body {
+    font-size: 14px;
+}
+
