@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import StarRatings from 'react-star-ratings';
 import MoviePopUp from './MoviePopUp';
@@ -13,6 +13,23 @@ function RowTwo({data , refetch , title}) {
     const [selectedMovie, setSelectedMovie] = useState(null);
     const { showModal, setShowModal } = useContext(PopUpContext);
     const { convertGenere } = useGenereConverter();
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+
+    const handleResize = () => {
+        setIsMobileView(window.innerWidth < 768);
+    };
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+    const handleCardClick = (item) => {
+        if (isMobileView) {
+            setSelectedMovie(item);
+            setShowModal(true);
+        }
+    };
     
     const addList = (item) => {
         addWatch({
@@ -65,6 +82,7 @@ function RowTwo({data , refetch , title}) {
                                         classNames='fade'
                                     >
                                         <div
+                                            onClick={() => handleCardClick(item)}
                                             className='relative rounded-md group group1 bg-transparent transition-all  duration-500 cursor-pointer card'
                                         >
                                             <img
@@ -75,7 +93,7 @@ function RowTwo({data , refetch , title}) {
                                             <div className="absolute inset-0 bg-black rounded-md bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                             <div className='content h-full lg:group-hover:block '>
-                                                <div className="opacity-0 pt-3 hover:opacity-100 transition-all duration-1000 hover:translate-y-0 translate-y-5 ease-in-out overflow-hidden">
+                                                <div className="opacity-0 pt-3 lg:hover:opacity-100 transition-all duration-1000 lg:hover:translate-y-0 translate-y-5 ease-in-out overflow-hidden">
                                                     <div className='flex transition bg-transparent ml-3 ease-in-out delay-150'>
                                                         <div className='text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white bg-black bg-opacity-50'>
                                                             <svg
