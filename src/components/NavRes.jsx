@@ -95,7 +95,7 @@ function NavRes() {
                                     <Link to={'/kids'}>Kids</Link>
                                 </li>
                                 <li>
-                                    <Link>Account</Link>
+                                    <Link to={'profiles/manage'}>Account</Link>
                                 </li>
                                 <li>
                                     <Link to={'/mylist'}>My List</Link>
