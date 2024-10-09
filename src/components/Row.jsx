@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import StarRatings from "react-star-ratings";
-import { Fade } from "react-reveal";
 import { useAddWatchMutation, useGetDataQuery } from "../store/tmdbApi";
 import MoviePopUp from "./MoviePopUp";
 import { useContext, useEffect, useState } from "react";
@@ -139,7 +138,7 @@ function Row(props) {
                                     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> {/* Overlay */}
 
                                     <div className="content pt-16 opacity-0 md:opacity-100">
-                                        <Fade top>
+                                        <MotionConfig top>
                                             <div className="flex transition ml-3 ease-in-out delay-150">
                                                 <Link to={`play/${item.id}`}
                                                     className="text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white"
@@ -265,7 +264,7 @@ function Row(props) {
                                                     }
                                                 )}
                                             </h1>
-                                        </Fade>
+                                        </MotionConfig>
                                     </div>
                                 </div>
                             </SwiperSlide>
