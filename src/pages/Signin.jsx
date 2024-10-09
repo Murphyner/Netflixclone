@@ -44,7 +44,7 @@ function Signin() {
 
 
   return (
-    <div className='absolute left-0 right-0 mx-auto flex items-center flex-col justify-center h-[620px] '>
+    <div className='absolute left-0  right-0 mx-auto flex items-center flex-col justify-center h-[620px] '>
        <div className='w-[40%] flex-col text-white font-bold hidden lg:flex'>
             <h2 className='text-5xl font-extrabold text-white  text-center'>Unlimited movies, TV shows, and more</h2>
             <p className='text-center'>Ready to watch? Enter your email to create or restart your membership.</p>

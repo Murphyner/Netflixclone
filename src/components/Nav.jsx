@@ -11,6 +11,7 @@ import { useGetDataQuery } from "../store/tmdbApi";
 import { genres, tvShowsGenres } from "../store/URL";
 import { VscListSelection } from "react-icons/vsc";
 import { CiGrid41 } from "react-icons/ci";
+import Notfications from "./Notfications";
 
 function Nav() {
   const [input, setInput] = useState(false);
@@ -18,6 +19,7 @@ function Nav() {
   const [scroll, setScroll] = useState(0);
   const { query, setQuery } = useContext(PopUpContext);
   const { data } = useGetDataQuery({ endpoint: genres }); 
+  const [not , setNot] = useState(false)
   const [genreId, setGenreId] = useState(0); 
   const username = localStorage.getItem("username");
 
@@ -88,13 +90,13 @@ function Nav() {
               <Link to={'/movies'}>Movies</Link>
             </li>
             <li>
-              <Link>Latest</Link>
+              <Link>Liked</Link>
             </li>
             <li>
               <Link to={"/mylist"}>My List</Link>
             </li>
             <li>
-              <Link>Browse by Languages</Link>
+              <Link>History</Link>
             </li>
           </ul>
           <FilterRes />
@@ -127,8 +129,9 @@ function Nav() {
               <div className="hidden lg:block text-sm font-medium">
                 <Link to={"kids"}>Kids</Link>
               </div>
-              <div className="cursor-pointer">
-                <LuBellRing className="text-xl" />
+              <div className="cursor-pointer relative">
+                <LuBellRing onClick={() => setNot(!not)} className="text-xl" />
+                {not && <Notfications />}
               </div>
               <div className="profiles relative group cursor-pointer text-sm">
                 <div className="flex items-center group">

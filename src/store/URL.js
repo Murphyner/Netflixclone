@@ -21,6 +21,7 @@ export const myList = `account/21512029/watchlist/movies?language=en-US&page=2&s
 export const tvPopular = `tv/popular?language=en-US&page=${page}`
 export const tvAir = `tv/on_the_air?language=en-US&page=${page}`
 export const tvTopRated = `tv/top_rated?language=en-US&page=${page}`
+export const latest = `movie/latest?page=${page} `
 export const similarMovies = (movieId) => `movie/${movieId}/similar?language=en-US&page=${page}`;
 export const tvShowsGenres = (genreId) => `discover/tv?with_genres=${genreId}`
 export const moviesWithGenres = (movieId) => `discover/movie?with_genres=${movieId}`
