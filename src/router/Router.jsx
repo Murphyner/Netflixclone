@@ -13,6 +13,7 @@ import Search from '../pages/Search'
 import Movies from '../pages/Movies'
 import Kids from '../pages/Kids'
 import Profile from '../pages/Profile'
+import Mobile from '../pages/Mobile'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
                 <Route path='/moviesgrid' element={<Movies />}/>
                 <Route path='movies/:moviesID' element={<Movies />} />
                 <Route path='/kids' element={<Kids />}/>
+                <Route path='/mobile/:id' element={<Mobile />}/>
             </Route>
             <Route>
                 <Route path='/profiles/manage' element={<Profile />} />
