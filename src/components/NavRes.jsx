@@ -87,7 +87,7 @@ function NavRes() {
                         <RxHamburgerMenu className="text-3xl font-bold" />
                     </div>
                     <Link to={'/'}>
-                        <img src="assets/images/logo.png" className="h-[25px]" alt="" />
+                        <img src="/assets/images/logo.png" className="h-[25px]" alt="" />
                     </Link>
                 </div>
                 <div>
@@ -109,6 +109,9 @@ function NavRes() {
                                     <Link to={'profiles/manage'}>Account</Link>
                                 </li>
                                 <li>
+                                    <Link to={'/'}>Home</Link>
+                                </li>
+                                <li>
                                     <Link to={'/mylist'}>My List</Link>
                                 </li>
                                 <li>
@@ -118,8 +121,8 @@ function NavRes() {
                                     <Link>Sign out of Netflix</Link>
                                 </li>
                             </ul>
-                            <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[235px]" />
-                            <ul className="absolute top-[245px] pb-10 text-xl font-bold opacity-60 flex flex-col gap-2">
+                            <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[265px]" />
+                            <ul className="absolute top-[275px] pb-40 text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
                                         <Link to={`mobile/${item.id}`} >{item.name}</Link>

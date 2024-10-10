@@ -1,10 +1,10 @@
 import React from 'react'
 import PopUpProvider from '../Context/PopUpContext'
 import Banner from '../components/Banner'
-import MobileFilter from './MobileFilter'
 import { useLocation } from 'react-router-dom'
 import { useGetDataQuery } from '../store/tmdbApi'
 import { moviesWithGenres } from '../store/URL'
+import RowTwo from '../components/RowTwo'
 
 function Mobile() {
     const location = useLocation()
@@ -19,7 +19,7 @@ function Mobile() {
         <div className='bg-bg-custom min-h-screen'>
             <div className='relative '>
                 <PopUpProvider>
-                    <MobileFilter  data={data} title={'Your Search'} refetch={refetch}/>
+                    <RowTwo data={data} refetch={refetch} title={'Your Search'} />
                 </PopUpProvider>
             </div>
 
