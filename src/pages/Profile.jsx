@@ -22,9 +22,9 @@ function Profile() {
                 <div className='flex w-full gap-5'>
                    
                         <img
-                            src='/assets/images/profil2.png'
+                            src='/assets/images/Character5.webp'
                             alt="Profile Avatar"
-                            className='w-28 h-32 rounded cursor-pointer'
+                            className='w-28 h-32 bg-red-600 rounded cursor-pointer'
                             onClick={() => alert('Choose a new avatar')}
                         />
                     <div>
@@ -86,7 +86,7 @@ function Profile() {
                     </div>
                 </div>
 
-                <div className='flex justify-center gap-3'>
+                <div className='flex justify-end gap-3'>
                     <button
                         className='bg-white px-8 py-2  text-black tracking-wider font-semibold transition-colors'
                         onClick={handleSave}
