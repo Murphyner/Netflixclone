@@ -12,7 +12,7 @@ function Search() {
     }, [query, refetch]);
 
     return (
-        <div className={`bg-bg-custom ${data ? 'h-auto' : 'min-h-screen'}`}>
+        <div className={`bg-bg-custom ${data && data.results?.length > 0 ? 'h-auto' : 'h-[100vh]'}`}>
             {data && data.results?.length > 0 && (
                 <RowTwo data={data} title={'More To Explore'} refetch={refetch} />
             )}

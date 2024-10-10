@@ -112,7 +112,7 @@ function RowTwo({data , refetch , title}) {
                                                         </div>
 
                                                         {title ? (<div
-                                                            onClick={() => addList(item)}
+                                                            onClick={isMobileView ? undefined : () => addList(item)}
                                                             className="group text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] hover:bg-white hover:text-black shadow-md cursor-pointer ease-linear transition-all duration-150"
                                                         >
                                                             <svg
@@ -130,8 +130,8 @@ function RowTwo({data , refetch , title}) {
                                                             </svg>
                                                         </div>) : (
                                                             <div
-                                                                onClick={() => removeList(item)}
-                                                                className="text-white w-8 h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white bg-black bg-opacity-50"
+                                                                onClick={isMobileView ? undefined  : () => removeList(item)}
+                                                                className="text-white w-8  h-8 border-[2px] rounded-full p-2 mr-1 backdrop-blur-[1px] shadow-md ease-linear transition-all duration-150 hover:text-black hover:bg-white bg-black bg-opacity-50"
                                                             >
                                                                 <svg
                                                                     xmlns="http://www.w3.org/2000/svg"
