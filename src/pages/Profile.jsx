@@ -18,13 +18,13 @@ function Profile() {
                 backgroundImage: `linear-gradient(to top , black, #111111)`
             }}>
             <div className='max-w-[600px] mx-auto'>
-                <h2 className='text-4xl w-full border-b-[1px] border-white border-opacity-20 pb-3 font-bold mb-6'>Edit Profile</h2>
+                <h2 className='text-2xl md:text-4xl w-full border-b-[1px] border-white border-opacity-20 pb-1 md:pb-3 font-bold mb-6'>Edit Profile</h2>
                 <div className='flex w-full gap-5'>
                    
                         <img
                             src='/assets/images/Character5.webp'
                             alt="Profile Avatar"
-                            className='w-28 h-32 bg-red-600 rounded cursor-pointer'
+                            className='w-20 h-24 md:w-28 md:h-32 bg-red-600 rounded cursor-pointer'
                             onClick={() => alert('Choose a new avatar')}
                         />
                     <div>
@@ -86,22 +86,22 @@ function Profile() {
                     </div>
                 </div>
 
-                <div className='flex justify-end gap-3'>
+                <div className='flex justify-end gap-3 text-sm md:text-base'>
                     <button
-                        className='bg-white px-8 py-2  text-black tracking-wider font-semibold transition-colors'
+                        className='bg-white px-4 md:px-8 py-1 md:py-2  text-black tracking-wider font-semibold transition-colors'
                         onClick={handleSave}
                     >
                         Save
                     </button>
                     <Link
                         to={'/'}
-                        className=' px-8 py-2 border-[1px] border-white tracking-wider font-semibold transition-colors'
+                        className='px-4 md:px-8 py-1 md:py-2 border-[1px] border-white tracking-wider font-semibold transition-colors'
                         onClick={handleSave}
                     >
                         Home
                     </Link>
                     <button
-                        className=' px-8 py-2 border-[1px] border-white tracking-wider font-semibold transition-colors'
+                        className='px-4 md:px-8 py-1 md:py-2 border-[1px] border-white tracking-wider font-semibold transition-colors'
                         onClick={handleSave}
                     >
                         Log Out
