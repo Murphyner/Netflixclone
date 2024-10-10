@@ -15,6 +15,8 @@ function NavRes() {
     const menuRef = useRef(null);
     const [profileImage, setProfileImage] = useState("/assets/images/Character1.webp");
     const username = localStorage.getItem("username");
+    console.log(data);
+    
 
     useEffect(() => {
         const storedImage = localStorage.getItem("profileImage");
@@ -120,7 +122,7 @@ function NavRes() {
                             <ul className="absolute top-[245px] pb-10 text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
-                                        <Link>{item.name}</Link>
+                                        <Link to={`mobile/${item.id}`} >{item.name}</Link>
                                     </li>
                                 ))}
                             </ul>
