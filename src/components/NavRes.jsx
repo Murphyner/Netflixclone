@@ -94,10 +94,10 @@ function NavRes() {
                 <div  className={`fixed min-h-screen bg-black top-16 p-2 overflow-y-auto no-scrollbar w-[300px] mx-auto z-40 left-0 transition-all duration-300 ${show ? 'translate-x-0' : '-translate-x-[100%]'}`}>
                     <div className="flex mx-auto pl-4 sm:pl-6">
                         <div className="flex flex-col gap-2">
-                            <div className="flex items-center gap-2">
+                            <Link to={'/profiles/manage'} className="flex items-center gap-2">
                                 <img className="h-8 w-8 bg-red-600 rounded" src={profileImage}/>
                                 <span className="font-extrabold text-lg opacity-50">{username}</span>
-                            </div>
+                            </Link>
                             <ul className="text-xl flex flex-col gap-2 font-bold opacity-60">
                                 <li className="flex items-center gap-2">
                                     <img className="h-8 w-8" src="/assets/images/kids2.png" alt="" />
@@ -117,7 +117,7 @@ function NavRes() {
                                 </li>
                             </ul>
                             <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[235px]" />
-                            <ul className="absolute top-[245px] text-xl font-bold opacity-60 flex flex-col gap-2">
+                            <ul className="absolute top-[245px] pb-10 text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
                                         <Link>{item.name}</Link>
