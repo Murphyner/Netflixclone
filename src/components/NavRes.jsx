@@ -80,7 +80,7 @@ function NavRes() {
     const backgroundClass = isMyList || (tvShows && sticky) ? 'bg-bg-custom opacity-100' : (sticky ? 'bg-black opacity-95' : 'bg-transparent');
 
     return (
-        <nav ref={menuRef} className={`md:hidden block font-medium text-white fixed w-full transition-all duration-500 bg-black z-50 left-0 ${sticky ? 'opacity-100' : 'opacity-95'}`}>
+        <nav ref={menuRef} className={`md:hidden  block font-medium text-white fixed w-full transition-all duration-500 bg-black z-50 left-0 ${sticky ? 'opacity-100' : 'opacity-95'}`}>
             <div className='w-[93%] mx-auto pl-2 h-16 py-2 flex items-center justify-between'>
                 <div className="flex items-center gap-4 ">
                     <div onClick={() => setShow(!show)}>
@@ -122,7 +122,7 @@ function NavRes() {
                                 </li>
                             </ul>
                             <hr className="border-t-[1px] w-[300px] border-white border-opacity-50 absolute left-0 top-[265px]" />
-                            <ul className="absolute top-[275px] pb-40 text-xl font-bold opacity-60 flex flex-col gap-2">
+                            <ul className="absolute top-[275px] pb-24 text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
                                         <Link to={`mobile/${item.id}`} >{item.name}</Link>

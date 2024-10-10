@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import StarRatings from 'react-star-ratings';
-import MoviePopUp from './MoviePopUp';
 import useGenereConverter from '../store/useGenereConverter';
-import { useAddWatchMutation, useGetDataQuery } from '../store/tmdbApi';
-import { PopUpContext } from '../Context/PopUpContext';
-import { myList } from '../store/URL';
+import { useAddWatchMutation } from '../store/tmdbApi';
 import toast, { Toaster } from 'react-hot-toast';
+import MoviePopUp from '../components/MoviePopUp';
+import { PopUpContext } from '../Context/PopUpContext';
 
-function RowTwo({data , refetch , title}) {
+
+function MobileFilter({ data,title , refetch }) {
     const [addWatch] = useAddWatchMutation();
     const [selectedMovie, setSelectedMovie] = useState(null);
     const { showModal, setShowModal } = useContext(PopUpContext);
@@ -30,7 +30,7 @@ function RowTwo({data , refetch , title}) {
             setShowModal(true);
         }
     };
-    
+
     const addList = (item) => {
         addWatch({
             media_type: "movie",
@@ -71,10 +71,10 @@ function RowTwo({data , refetch , title}) {
             <Toaster />
             <div className='min-h-screen bg-bg-custom'>
                 <div className='w-[93%] mx-auto p-2'>
-                    <div className='relative top-20 w-full mx-auto'>
+                    <div className='relative -top-20 w-full mx-auto'>
                         {title !== undefined ? <h1 className='text-white font-semibold text-xl'>More to Explore</h1> : ''}
                         <div>
-                            <TransitionGroup className='grid w-full pt-10 mx-auto grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 py-10 grid-flow-row overflow-y-scroll no-scrollbar'>
+                            <TransitionGroup className='grid w-full pt-8 mx-auto grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 py-10 grid-flow-row overflow-y-scroll no-scrollbar'>
                                 {data?.results.map((item) => (
                                     <CSSTransition
                                         key={item.id}
@@ -214,4 +214,4 @@ function RowTwo({data , refetch , title}) {
     );
 }
 
-export default RowTwo;
+export default MobileFilter;
