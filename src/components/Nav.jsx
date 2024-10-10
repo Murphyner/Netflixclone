@@ -21,10 +21,20 @@ function Nav() {
   const { data } = useGetDataQuery({ endpoint: genres }); 
   const [not , setNot] = useState(false)
   const [genreId, setGenreId] = useState(0); 
+  const [profileImage, setProfileImage] = useState("/assets/images/Character1.webp");
   const username = localStorage.getItem("username");
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedImage = localStorage.getItem("profileImage");
+    if (storedImage) {
+      setProfileImage(storedImage);
+    }else {
+      localStorage.setItem('profileImage', '/assets/images/Character1.webp')
+    }
+  }, []);
   
 
   // Sticky Nav on Scroll
@@ -137,8 +147,8 @@ function Nav() {
                 <div className="flex items-center group">
                   <div className="h-8 w-8">
                     <img
-                      className="h-8 rounded"
-                      src="/assets/images/profil2.png"
+                      className="h-8 rounded bg-red-600"
+                      src={profileImage}
                       alt="Profile"
                     />
                   </div>
@@ -147,11 +157,12 @@ function Nav() {
                   </div>
                 </div>
                 <MdOutlineArrowDropDown className="absolute top-8 right-6 rotate-180 hidden group-hover:block text-2xl" />
+                <div className="bg-black absolute w-[200px] h-10 right-2 top-3 opacity-0 hidden group-hover:block"></div>
                 <div className="hidden absolute bg-black bg-opacity-80 flex-col gap-2 rounded w-[200px] right-2 p-3 group-hover:flex top-[50px]">
-                  <Link className="flex items-center h-8 w-8 gap-3">
+                  <Link to={'/profiles/manage'} className="flex items-center h-8 w-8 gap-3">
                     <img
-                      className="h-8 w-8 rounded"
-                      src="/assets/images/profil2.png"
+                      className="h-8 w-8 rounded bg-red-600"
+                      src={profileImage}
                       alt="Profile"
                     />
                     <h2 className="hover:underline">{username}</h2>

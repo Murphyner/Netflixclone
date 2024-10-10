@@ -31,7 +31,7 @@ function Banner() {
             style={{
                 backgroundImage: `linear-gradient(90deg, hsl(0deg 0% 7% / 91%) 0%, hsl(0deg 0% 0% / 0%) 35%, hsl(220deg 26% 44% / 0%) 100%), url(${imageUrl + selectedMovie.backdrop_path})`,
             }}
-            className="h-[50rem] md:h-[55rem] 3xl:h-[63rem] bg-cover bg-center object-contain grid items-center"
+            className="h-[50rem] md:h-[55rem] 3xl:h-[63rem] object-cover bg-center  grid items-center"
         >
             <div className="ml-2 mr-2 sm:mr-0 sm:ml-[54px] mt-[75%] sm:mt-52">
                     <Fade direction='up'>

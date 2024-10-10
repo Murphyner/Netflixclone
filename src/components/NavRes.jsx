@@ -12,7 +12,18 @@ function NavRes() {
     const { data } = useGetDataQuery({ endpoint: genres });
     const location = useLocation();
     const navigate = useNavigate();
-    const menuRef = useRef(null); // Reference for the menu container
+    const menuRef = useRef(null);
+    const [profileImage, setProfileImage] = useState("/assets/images/Character1.webp");
+    const username = localStorage.getItem("username");
+
+    useEffect(() => {
+        const storedImage = localStorage.getItem("profileImage");
+        if (storedImage) {
+            setProfileImage(storedImage);
+        } else {
+            localStorage.setItem('profileImage', '/assets/images/Character1.webp')
+        }
+    }, []);
 
     useEffect(() => {
         function handleScroll() {
@@ -38,7 +49,6 @@ function NavRes() {
     };
 
     useEffect(() => {
-        // Disable background scroll when menu is open
         if (show) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -50,11 +60,10 @@ function NavRes() {
         };
     }, [show]);
 
-    // Close the menu when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
-                setShow(false); // Close the menu if clicking outside
+                setShow(false); 
             }
         };
 
@@ -86,8 +95,8 @@ function NavRes() {
                     <div className="flex mx-auto pl-4 sm:pl-6">
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center gap-2">
-                                <img className="h-8 w-8 rounded" src="/assets/images/profil2.png" />
-                                <span className="font-extrabold text-lg opacity-50">User 1</span>
+                                <img className="h-8 w-8 bg-red-600 rounded" src={profileImage}/>
+                                <span className="font-extrabold text-lg opacity-50">{username}</span>
                             </div>
                             <ul className="text-xl flex flex-col gap-2 font-bold opacity-60">
                                 <li className="flex items-center gap-2">
