@@ -88,7 +88,7 @@ function Profile() {
                                     <div 
                                         onClick={() => setProfileImage(`/assets/images/Character${i + page}.webp`)}
                                         className='bg-red-600 rounded-md cursor-pointer hover:scale-110 transition-all duration-700'>
-                                        <img className='h-12 sm:h-24 md:h-28' src={`/assets/images/Character${i + page}.webp`} />
+                                        <img className='h-12 sm:h-[96px] md:h-28' src={`/assets/images/Character${i + page}.webp`} />
                                     </div>
                                 ))}
                             </div>
