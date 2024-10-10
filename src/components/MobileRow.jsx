@@ -69,7 +69,7 @@ function MobileRow({ data, refetch , title}) {
     return (
         <>
             <Toaster />
-            <div className='min-h-screen bg-bg-custom'>
+            <div className='min-h-screen bg-bg-custom block md:hidden'>
                 <div className='w-[93%] mx-auto p-2'>
                     <div className='relative -top-14 w-full mx-auto'>
                       <h1 className='text-white font-semibold text-xl'>Your Search</h1> 

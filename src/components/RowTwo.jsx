@@ -78,7 +78,7 @@ function RowTwo({data , refetch , title}) {
                                 {data?.results.map((item) => (
                                     <CSSTransition
                                         key={item.id}
-                                        timeout={500}
+                                        timeout={300}
                                         classNames='fade'
                                     >
                                         <div
