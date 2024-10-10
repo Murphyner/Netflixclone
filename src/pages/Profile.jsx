@@ -84,11 +84,11 @@ function Profile() {
                         </div>
                         <div className='mb-6'>
                             <div className='flex w-full justify-between'>
-                                {Array.from({ length: 5 }).map((_, i) => (
+                                {Array.from({ length: 4 }).map((_, i) => (
                                     <div 
                                         onClick={() => setProfileImage(`/assets/images/Character${i + page}.webp`)}
                                         className='bg-red-600 rounded-md cursor-pointer hover:scale-110 transition-all duration-700'>
-                                        <img className='h-10 md:h-20' src={`/assets/images/Character${i + page}.webp`} />
+                                        <img className='h-12 md:h-28' src={`/assets/images/Character${i + page}.webp`} />
                                     </div>
                                 ))}
                             </div>
