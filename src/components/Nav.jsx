@@ -37,7 +37,6 @@ function Nav() {
   }, []);
   
 
-  // Sticky Nav on Scroll
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
@@ -51,6 +50,12 @@ function Nav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", 
+    }); 
+  }, [location.pathname, genreId]);
 
   const handleInput = (e) => {
     const inputValue = e.target.value;

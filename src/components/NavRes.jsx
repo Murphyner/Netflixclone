@@ -125,7 +125,7 @@ function NavRes() {
                             <ul className="absolute top-[275px] pb-24 text-xl font-bold opacity-60 flex flex-col gap-2">
                                 {data?.genres?.map((item, i) => (
                                     <li key={i}>
-                                        <Link to={`mobile/${item.id}`} >{item.name}</Link>
+                                        <Link to={`mobile/${item.id}`} onClick={() => setShow(false)} >{item.name}</Link>
                                     </li>
                                 ))}
                             </ul>
