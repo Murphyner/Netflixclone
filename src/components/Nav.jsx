@@ -12,6 +12,8 @@ import { genres, tvShowsGenres } from "../store/URL";
 import { VscListSelection } from "react-icons/vsc";
 import { CiGrid41 } from "react-icons/ci";
 import Notfications from "./Notfications";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../store/authSlice";
 
 function Nav() {
   const [input, setInput] = useState(false);
@@ -26,6 +28,7 @@ function Nav() {
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const storedImage = localStorage.getItem("profileImage");
@@ -35,6 +38,12 @@ function Nav() {
       localStorage.setItem('profileImage', '/assets/images/Character1.webp')
     }
   }, []);
+
+  const logout = () => {
+    dispatch(logoutUser()).then(() => {
+      navigate('/')
+    })
+  }
   
 
   useEffect(() => {
@@ -192,7 +201,7 @@ function Nav() {
                     </div>
                     <h2 className="hover:underline">Help Center</h2>
                   </Link>
-                  <button className="absolute w-full border-t-[1px] right-0 border-opacity-50 border-white bottom-0 py-1">
+                  <button onClick={logout} className="absolute w-full border-t-[1px] right-0 border-opacity-50 border-white bottom-0 py-1">
                     Sign out of Netflix
                   </button>
                 </div>

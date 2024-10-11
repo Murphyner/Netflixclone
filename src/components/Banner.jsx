@@ -5,7 +5,7 @@ import { useGetDataQuery } from '../store/tmdbApi';
 import MoviePopUp from './MoviePopUp';
 import StarRatings from 'react-star-ratings';
 import { Animated, movieUpcoming } from '../store/URL';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Fade } from 'react-awesome-reveal';
 
 function Banner() {
@@ -79,7 +79,7 @@ function Banner() {
                         </div>
 
                         <div className="flex justify-center sm:justify-start">
-                            <button className="bg-red-800 hover:bg-red-900 transition duration-500 ease-in-out shadow-2xl flex items-center mb-3 mr-3 text-base sm:text-xl font-semibold text-white py-2 sm:py-2 px-10 sm:px-14 rounded-md">
+                            <Link to={`play/${selectedMovie.id}`} className="bg-red-800 hover:bg-red-900 transition duration-500 ease-in-out shadow-2xl flex items-center mb-3 mr-3 text-base sm:text-xl font-semibold text-white py-2 sm:py-2 px-10 sm:px-14 rounded-md">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -95,7 +95,7 @@ function Banner() {
                                     />
                                 </svg>
                                 Play
-                            </button>
+                            </Link>
                             <button
                                 onClick={() => setShowModal(true)}
                                 className="bg-[#33333380] flex items-center shadow-2xl mb-3 text-base sm:text-xl font-semibold text-white hover:bg-white hover:text-black transition duration-500 ease-in-out py-2 px-8 rounded-md"

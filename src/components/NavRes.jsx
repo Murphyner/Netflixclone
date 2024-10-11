@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useGetDataQuery } from "../store/tmdbApi";
 import { genres } from "../store/URL";
 import { PopUpContext } from "../Context/PopUpContext";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../store/authSlice";
 
 function NavRes() {
     const [show, setShow] = useState(false);
@@ -15,7 +17,7 @@ function NavRes() {
     const menuRef = useRef(null);
     const [profileImage, setProfileImage] = useState("/assets/images/Character1.webp");
     const username = localStorage.getItem("username");
-    console.log(data);
+    const dispatch = useDispatch()
     
 
     useEffect(() => {
@@ -61,6 +63,11 @@ function NavRes() {
             document.body.style.overflow = 'auto';
         };
     }, [show]);
+    const logout = () => {
+        dispatch(logoutUser()).then(() => {
+            navigate('/')
+        })
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -117,7 +124,7 @@ function NavRes() {
                                 <li>
                                     <Link>Help Center</Link>
                                 </li>
-                                <li>
+                                <li onClick={logout}>
                                     <Link>Sign out of Netflix</Link>
                                 </li>
                             </ul>
