@@ -136,7 +136,6 @@ function Row(props) {
                                     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> {/* Overlay */}
 
                                     <div className="content pt-16 opacity-0  md:opacity-100">
-                                        {/* Replace Fade with motion.div */}
                                         <div className="opacity-0 pt-3 hover:opacity-100 transition-all  duration-700 hover:translate-y-0 translate-y-3 ease-in-out">
                                             <div className="flex transition ml-3 ease-in-out delay-150">
                                                 <Link to={`play/${item.id}`}
