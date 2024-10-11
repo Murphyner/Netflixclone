@@ -6,7 +6,7 @@ function Login() {
   return (
     <div className='bg-black  md:bg-[url(/public/assets/images/loginbg.jpg)] object-cover object-center h-[100vh] md:h-[100vh]'>
         <div className='container mx-auto py-5 pb-12 h-full'>
-            <div className='absolute  inset-0 overlay bg-black opacity-60 h-[90vh]'></div>
+            <div className='absolute  inset-0 overlay bg-black opacity-60 h-[100vh]'></div>
             <Lognav />
             <Outlet />
         </div>
